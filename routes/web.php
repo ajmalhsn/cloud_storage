@@ -11,9 +11,15 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/blank', function () {
+    View::share([ 'currentUser' => Auth::user() ]);
     return view('blank');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
